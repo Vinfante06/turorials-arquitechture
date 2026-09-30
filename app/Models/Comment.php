@@ -1,30 +1,22 @@
 <?php
 
 namespace App\Models;
-use App\Models\Product;
+
 use Illuminate\Database\Eloquent\Model;
 use illuminate\Database\eloquent\Relations\BelongsTo;
 
-
 class Comment extends Model
 {
-    /** 
+    /**
+     * PRODUCT ATTRIBUTES
 
-     * PRODUCT ATTRIBUTES 
+     * $this->attributes['id'] - int - contains the product primary key (id)
 
-     * $this->attributes['id'] - int - contains the product primary key (id) 
+     * $this->attributes['description'] - string - contains the comment description
 
-     * $this->attributes['description'] - string - contains the comment description 
-
-     * $this->product - Product - contains the associated Product 
-
-    */
-
-
-
+     * $this->product - Product - contains the associated Product
+     */
     protected $fillable = ['description', 'product_id'];
-
-
 
     public function getId(): int
     {
@@ -33,16 +25,12 @@ class Comment extends Model
 
     }
 
-
-
     public function setId(int $id): void
     {
 
         $this->attributes['id'] = $id;
 
     }
-
-
 
     public function getDescription(): string
     {
@@ -51,16 +39,12 @@ class Comment extends Model
 
     }
 
-
-
     public function setDescription(string $desc): void
     {
 
         $this->attributes['description'] = $desc;
 
     }
-
-
 
     public function getProductId(): int
     {
@@ -69,8 +53,6 @@ class Comment extends Model
 
     }
 
-
-
     public function setProductId(int $pId): void
     {
 
@@ -78,14 +60,10 @@ class Comment extends Model
 
     }
 
-
-
     public function product(): BelongsTo
     {
         return $this->belongsTo(Product::class);
     }
-
-
 
     public function getProduct(): Product
     {
